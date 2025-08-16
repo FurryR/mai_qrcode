@@ -1,0 +1,22 @@
+services:
+  mai_qrcode:
+    build:
+      context: .
+      args:
+        DEB_REPO: "http://mirrors.tuna.tsinghua.edu.cn/debian"
+        PYPI_REPO: "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+    image: mai_qrcode
+    container_name: mai_qrcode
+    ports:
+      - "8000:8000"
+      - "5900:5900"
+    networks:
+      - bridge
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+
+networks:
+  bridge:
+    driver: bridge
